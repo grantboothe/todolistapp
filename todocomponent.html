@@ -1,0 +1,21 @@
+<h1>Make A List</h1>
+<input ng-model="todoInput" ng-keyup="searchEnter()" type="text"
+       style="display:block;margin: 0 auto;padding:5px;font-size:15px;width:300px;" placeholder="Add New List Here">
+<button type="submit" ng-click="listAdd()">Add New List</button>
+<div ng-repeat="list in todoList">
+    <input type="checkbox" ng-model="list.done">
+    <span ng-bind="list.todoText"></span>
+    <div>
+        <input type="text" ng-model="theToDo">
+        <button ng-click="AddtoDo(list, theToDo)">Add Task</button>
+    </div>
+    <div ng-repeat="todo in list.todos">
+        <input type="checkbox" ng-model="todo.done">
+        <input type="text" id="extratext" value="">
+        <span ng-bind="todo.todo"></span>
+    </div>
+</div>
+<p>
+    <button ng-click="removetask()">Remove Task</button>
+    <button ng-click="remove()">Remove List</button>
+</p>
