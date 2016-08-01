@@ -2,7 +2,8 @@
 <input ng-model="todoInput" ng-keyup="searchEnter()" type="text"
        style="display:block;margin: 0 auto;padding:5px;font-size:15px;width:300px;" placeholder="Add New List Here">
 <button type="submit" ng-click="listAdd()">Add New List</button>
-<div ng-repeat="list in todoList">
+<button type="submit" ng-repeat="list in todoList" ng-click="setcurrentlist(list.todoText)">{{ list.todoText}}</button>
+<div ng-repeat="list in todoList | filter: {'todoText': currentlist} : true">
     <input type="checkbox" ng-model="list.done">
     <span ng-bind="list.todoText"></span>
     <div>
@@ -11,7 +12,6 @@
     </div>
     <div ng-repeat="todo in list.todos">
         <input type="checkbox" ng-model="todo.done">
-        <input type="text" id="extratext" value="">
         <span ng-bind="todo.todo"></span>
     </div>
 </div>

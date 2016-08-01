@@ -8,6 +8,11 @@
 
 
     function todocomponent($scope) {
+        $scope.setcurrentlist = function (todolistname) {
+            $scope.currentlist = todolistname;
+            console.log($scope.currentlist)
+        };
+
         $scope.todoList = [{todoText: 'First List', done: false, todos: []}];
 
         $scope.listAdd = function () {
@@ -17,6 +22,8 @@
 
         $scope.AddtoDo = function (list, theToDo) {
             list.todos.push({todo: theToDo, done: false});
+            console.log(list.todos)
+            console.log(list)
             theToDo = '';
         };
 
