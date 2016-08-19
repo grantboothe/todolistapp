@@ -1,4 +1,4 @@
-angular.module('app',['ui.router']).config(function ($stateProvider) {
+angular.module('app',['ui.router', 'ngStorage', 'toaster', 'ngAnimate']).config(function ($stateProvider) {
     $stateProvider.state('todo',{
         template: '<todocomponent></todocomponent>',
         url:"/todo"

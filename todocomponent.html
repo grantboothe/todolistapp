@@ -1,21 +1,24 @@
 <h1>Make A List</h1>
+<form>
 <input ng-model="todoInput" ng-keyup="searchEnter()" type="text"
-       style="display:block;margin: 0 auto;padding:5px;font-size:15px;width:300px;" placeholder="Add New List Here">
+       style="display:block;margin: 0 auto;padding:5px;font-size:15px;width:300px;" placeholder="Add New List Here" required>
 <button type="submit" ng-click="listAdd()">Add New List</button>
-<button type="submit" ng-repeat="list in todoList" ng-click="setcurrentlist(list.todoText)">{{ list.todoText}}</button>
+    </form>
+<button type="submit" ng-repeat="list in todoList" ng-click="setcurrentlist(list.todoText)">{{ list.todoText  }}</button>
 <div ng-repeat="list in todoList | filter: {'todoText': currentlist} : true">
     <input type="checkbox" ng-model="list.done">
-    <span ng-bind="list.todoText"></span>
-    <div>
-        <input type="text" ng-model="theToDo">
+    <span ng-bind="list.todoText | capitalize"></span>
+    <form>
+        <input type="text" ng-model="theToDo" required>
         <button ng-click="AddtoDo(list, theToDo)">Add Task</button>
-    </div>
+    </form>
     <div ng-repeat="todo in list.todos">
         <input type="checkbox" ng-model="todo.done">
         <span ng-bind="todo.todo"></span>
     </div>
 </div>
 <p>
+    <toaster-container></toaster-container>
     <button ng-click="removetask()">Remove Task</button>
     <button ng-click="remove()">Remove List</button>
 </p>
